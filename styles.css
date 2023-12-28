@@ -1,0 +1,44 @@
+/* ### Pallette ### */
+
+/*
+colors: 
+#222831  color for the font
+#393e46  background color
+#0092ca  some special buttons color (font)
+#eeeeee  calculator color
+#d3d6db  buttons collor
+
+*/
+
+body{
+   background-color: #393e46; 
+   color:#222831;
+}
+
+.container{
+    display:flex;
+
+    justify-content: center;
+}
+
+.calculator{
+    padding:2rem;
+    margin-top:4rem;
+    
+}
+
+.btn{
+    margin:0.5rem;
+    padding:1rem;
+    background-color: #d3d6db;
+    width: 2rem;
+    height: 2rem;
+    border:solid;
+    text-align: center;
+    
+}
+
+.row{
+    display:flex;
+    align-items: center;
+}
