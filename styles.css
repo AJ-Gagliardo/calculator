@@ -62,7 +62,8 @@ border-radius:6%;
 
 .equals-btn{
     font-weight: 800;
-    color:#0092ca;
+    background-color:#5bc6f0;
+    color:#eeee;
     border: solid #222831;
 
 }
