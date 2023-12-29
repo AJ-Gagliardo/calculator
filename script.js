@@ -68,14 +68,33 @@ function eraseDisplay(){
 
 displayBot.textContent = displayNumber;
 
-const num1= document.getElementById('num1');
 
-num1.addEventListener('click', ()=>{
+
+
+
+
+const numbers = [];
+
+for (let i = 0; i <= 9; i++) {
+  const num = document.getElementById(`num${i}`);
+  numbers.push(num);
+}
+
+
+
+numbers.forEach((num) => {
+    num.addEventListener('click', (event)=>{
     eraseDisplay();
-    displayNumber.push(1);
-    displayBot.textContent = displayNumber.join('');
-}) 
-    
+
+    const clickedBtn = event.target.textContent;
+
+    displayNumber.push(clickedBtn);
+    displayBot.textContent = displayNumber.join('')
+
+
+});
+});
+
  
 
 
