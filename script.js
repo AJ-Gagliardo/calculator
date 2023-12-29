@@ -33,3 +33,5 @@ return (operator == '+') ? add(n1,n2)
 : operator == '/' ? divide(n1,n2)
 : 'n/a'
 }
+
+const display = document.getElementsByClassName('display');
