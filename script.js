@@ -61,8 +61,10 @@ let displayNumberIsResult = false; //begins false to display input
 
 // This is so display numbers are deleted like with real calculators
 function eraseDisplay(){
+   
     if (displayNumberIsResult === true){
-displayTop.textContent = displayNumber.join('');
+        displayTop.textContent = `${n1} ${operator}`
+        // displayNumber.join('');
         displayNumber = [];
         displayNumberIsResult = false;
     }
@@ -119,6 +121,7 @@ plus.addEventListener('click', (event)=>{
         n1 = parseFloat(displayBot.textContent);
         n2 = '';
         displayNumber = [];
+        operator='';
     }
     else if(firstInput === false && n2===''){
         operator = '+'
@@ -170,6 +173,7 @@ equals.addEventListener('click', (event)=>{
         n2= '';
         displayNumberIsResult = true;
         displayNumber=[];
+        operator='';
 
     }
 
