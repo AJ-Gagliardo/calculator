@@ -55,7 +55,7 @@ const displayTop = document.getElementById('display-top');
 
 
 
-let displayNumber = [22];
+let displayNumber = [];
 let displayNumberIsResult = false; //begins false to display input
 
 
@@ -96,6 +96,60 @@ numbers.forEach((num) => {
 });
 
  
+/// probably later will have to do something to move displayNumber to become 'n1' once operator is clicked
+// and then it has to erase the 'display number'
+// in the top display  iwill hae to o something like `${n1} ${operator} ${n2}`
+
+
+// Buttons to call actions of operators
+
+let firstInput = true;
+
+
+const plus = document.getElementById('plusSymbol');
+plus.addEventListener('click', (event)=>{
+    
+    if(firstInput === true){
+        n1= parseFloat(displayNumber.join(''));
+        operator = '+'
+        displayTop.textContent = `${n1} ${operator}`
+        displayNumberIsResult = true;
+        firstInput = false;
+        displayNumber = [];
+        displayBot.textContent =''
+    };
+
+    // elseif(displayNumberIsResult === true){
+
+    // }
+
+
+});
+
+
+const equals = document.getElementById('equalsSymbol');
+equals.addEventListener('click', (event)=>{
+    // if(displayNumberIsResult === false){
+    //     return;
+    // }
+    if(firstInput === false){
+        n2=parseFloat(displayNumber.join(''));
+        displayTop.textContent = `${n1} ${operator} ${n2}`; 
+
+        operator === '+' ? (displayBot.textContent = add(n1,n2))
+        : operator === '-' ? (displayBot.textContent = subsctract(n1,n2))
+        : operator === '*' ? (displayBot.textContent = multiply(n1,n2))
+        :operator === '/' ? (display.Bot.textContent = divide(n1,n2))
+        : 'undefined';
+
+        n1= parseFloat(displayBot.textContent);
+        n2= '';
+        displayNumberIsResult = true;
+        displayNumber=[];
+
+    }
+
+})
 
 
 
