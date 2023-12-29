@@ -59,8 +59,10 @@ let displayNumber = [];
 let displayNumberIsResult = false; //begins false to display input
 
 
+// This is so display numbers are deleted like with real calculators
 function eraseDisplay(){
     if (displayNumberIsResult === true){
+displayTop.textContent = displayNumber.join('');
         displayNumber = [];
         displayNumberIsResult = false;
     }
@@ -109,7 +111,20 @@ let firstInput = true;
 const plus = document.getElementById('plusSymbol');
 plus.addEventListener('click', (event)=>{
     
-    if(firstInput === true){
+
+    if(firstInput === false && n2!=''){
+        n2 = parseFloat(displayNumber.join(''));
+        displayBot.textContent = add(n1, n2);
+        displayTop.textContent = `${n1} ${operator} ${n2}`;
+        n1 = parseFloat(displayBot.textContent);
+        n2 = '';
+        displayNumber = [];
+    }
+    else if(firstInput === false && n2===''){
+        operator = '+'
+    }
+
+    else if(firstInput === true){
         n1= parseFloat(displayNumber.join(''));
         operator = '+'
         displayTop.textContent = `${n1} ${operator}`
@@ -119,8 +134,16 @@ plus.addEventListener('click', (event)=>{
         displayBot.textContent =''
     };
 
-    // elseif(displayNumberIsResult === true){
+   
+    
+    // {
+    //     n2=parseFloat(displayNumber.join(''));
+    //     displayBot.textContent = add(n1,n2)
+    //     displayTop.textContent = `${n1} ${operator} ${n2}`
 
+    // n1= parseFloat(displayBot.textContent);
+    //     n2= '';
+    //     displayNumber=[];
     // }
 
 
@@ -128,6 +151,7 @@ plus.addEventListener('click', (event)=>{
 
 
 const equals = document.getElementById('equalsSymbol');
+
 equals.addEventListener('click', (event)=>{
     // if(displayNumberIsResult === false){
     //     return;
