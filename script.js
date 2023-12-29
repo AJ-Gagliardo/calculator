@@ -55,14 +55,29 @@ const displayTop = document.getElementById('display-top');
 
 
 
-let displayNumber = [];
+let displayNumber = [22];
+let displayNumberIsResult = false;
+// function eraseDisplay(){
+
+// }
+
+displayBot.textContent = displayNumber;
+// i will probably have to create a variable that turns ON/Off
+// to see if its a result or not, if its a result, delete it when
+// i press a button, if its not, then just keep adding number
 
 const num1= document.getElementById('num1');
 
 num1.addEventListener('click', ()=>{
+    if (displayNumberIsResult === true){
+        displayNumber = [];
+        displayNumberIsResult = false;
+    }
     displayNumber.push(1);
     displayBot.textContent = displayNumber.join('');
-})
+}) 
+    
+ 
 
 
 
