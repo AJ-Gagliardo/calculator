@@ -94,6 +94,7 @@ numbers.forEach((num) => {
 
     displayNumber.push(clickedBtn);
     displayBot.textContent = displayNumber.join('')
+    // n2=displayNumber.join('');
 
 
 });
@@ -108,6 +109,7 @@ numbers.forEach((num) => {
 // Buttons to call actions of operators
 
 let firstInput = true;
+previousIsResult=false;
 
 
 const plus = document.getElementById('plusSymbol');
@@ -122,19 +124,25 @@ plus.addEventListener('click', (event)=>{
         n2 = '';
         displayNumber = [];
         operator='';
+        previousIsResult=false; // testing
+        console.log(`n1= ${n1} , n2= ${n2}, operator= ${operator}, firstInput = ${firstInput}, previousIsResult= ${previousIsResult} if +`)
     }
     else if(firstInput === false && n2===''){
         operator = '+'
+        displayTop.textContent = `${n1} ${operator} ${n2}`;
+        previousIsResult = false; //testing
+         console.log(`n1= ${n1} , n2= ${n2}, operator= ${operator}, firstInput = ${firstInput}, previousIsResult= ${previousIsResult} else if +`)
     }
 
-    else if(firstInput === true){
+    else if(firstInput === true && previousIsResult===false){
         n1= parseFloat(displayNumber.join(''));
         operator = '+'
         displayTop.textContent = `${n1} ${operator}`
-        displayNumberIsResult = true;
+        displayNumberIsResult = true; 
         firstInput = false;
         displayNumber = [];
-        displayBot.textContent =''
+        displayBot.textContent ='' 
+        console.log(`n1= ${n1} , n2= ${n2}, operator= ${operator}, firstInput = ${firstInput}, previousIsResult= ${previousIsResult} else if + 2nd`)
     };
 
    
@@ -159,7 +167,7 @@ equals.addEventListener('click', (event)=>{
     // if(displayNumberIsResult === false){
     //     return;
     // }
-    if(firstInput === false){
+    if(firstInput === false && previousIsResult===false){
         n2=parseFloat(displayNumber.join(''));
         displayTop.textContent = `${n1} ${operator} ${n2}`; 
 
@@ -174,11 +182,19 @@ equals.addEventListener('click', (event)=>{
         displayNumberIsResult = true;
         displayNumber=[];
         operator='';
-
+        previousIsResult = true;
+        console.log(`n1= ${n1} , n2= ${n2}, operator= ${operator}, firstInput = ${firstInput}, previousIsResult= ${previousIsResult}`)
+        
     }
-
+    if(firstInput === true){
+        return;
+    }
 })
 
+// displayBot.addEventListener('click',(event)=>{
+//     console.log(n2)
+//     n2= displayNumber.join('')
+// })
 
 
 
