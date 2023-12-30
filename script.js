@@ -117,8 +117,10 @@ previousIsResult=false;
 const plus = document.getElementById('plusSymbol');
 plus.addEventListener('click', (event)=>{
     
-
-    if(firstInput === false && n2!=''){
+    if(operator === '+'){
+        return;
+    }
+    else if(firstInput === false && n2!=''){
         n2 = parseFloat(displayNumber.join(''));
         displayBot.textContent = add(n1, n2);
         displayTop.textContent = `${n1} ${operator} ${n2}`;
@@ -202,7 +204,11 @@ const substract = document.getElementById('substractSymbol');
 substract.addEventListener('click', (event)=>{
 
 
-    if(firstInput===true && previousIsResult === false){
+    if (operator === '-'){
+        return;
+    }
+
+    else if(firstInput===true && previousIsResult === false){
         operator = '-';
         console.log(operator)
         n1=parseFloat(displayBot.textContent);
@@ -212,7 +218,7 @@ substract.addEventListener('click', (event)=>{
         console.log(`n1= ${n1} , n2= ${n2}, operator= ${operator}, firstInput = ${firstInput}, previousIsResult= ${previousIsResult} if -`)
     }
 
-    else if(firstInput === false && n2=== ''){
+    else if(firstInput === false && n2=== '' ){
         operator = '-';
         console.log(operator)
         displayTop.textContent = `${n1} ${operator}`
