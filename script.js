@@ -32,9 +32,7 @@ let n1 ; //first number on the operation
 let operator ; //if its plus, minus, etc.
 let n2 ; //second number on the operation
 
-// const operate = ()=>{
-// if(operator == '+') return add(n1,n2)
-// }
+
 
 const operate = ()=>{
 return (operator == '+') ? add(n1,n2)
@@ -94,23 +92,19 @@ numbers.forEach((num) => {
 
     displayNumber.push(clickedBtn);
     displayBot.textContent = displayNumber.join('')
-    // n2=displayNumber.join('');
+
 
 
 });
 });
 
- 
-/// probably later will have to do something to move displayNumber to become 'n1' once operator is clicked
-// and then it has to erase the 'display number'
-// in the top display  iwill hae to o something like `${n1} ${operator} ${n2}`
 
 
 // Buttons to call actions of operators
 
 let firstInput = true;
 previousIsResult=false;
-noOperationYet=true;
+
 
 
 
@@ -128,13 +122,7 @@ plus.addEventListener('click', (event)=>{
         displayTop.textContent = `${n1} ${operator}`;
 
     }
-    // else if(noOperationYet === true){
-    //     operator='+';
-    //     n1=parseFloat(displayBot.textContent)
-    //     displayNumber=[]
-    //     displayTop.textContent = `${n1} ${operator}`;
 
-    // }
     else if(firstInput === false && n2!=''){
         n2 = parseFloat(displayNumber.join(''));
         displayBot.textContent = add(n1, n2);
@@ -167,15 +155,6 @@ plus.addEventListener('click', (event)=>{
 
    
     
-    // {
-    //     n2=parseFloat(displayNumber.join(''));
-    //     displayBot.textContent = add(n1,n2)
-    //     displayTop.textContent = `${n1} ${operator} ${n2}`
-
-    // n1= parseFloat(displayBot.textContent);
-    //     n2= '';
-    //     displayNumber=[];
-    // }
 
 
 });
@@ -185,11 +164,12 @@ plus.addEventListener('click', (event)=>{
 const equals = document.getElementById('equalsSymbol');
 
 equals.addEventListener('click', (event)=>{
-    // if(displayNumberIsResult === false){
-    //     return;
-    // }
+
     if(firstInput === true){
         return;
+    }
+    else if(operator!='' && displayNumber.length=== 0){
+        return
     }
 
     else if((firstInput === false && previousIsResult===false)){
@@ -286,10 +266,6 @@ multiplication.addEventListener('click', (event)=>{
 
 })
 
-
-// problem to solve 
-// 2 + - 
-// changing symbol gives NAN
 
 
 
