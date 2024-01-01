@@ -122,10 +122,10 @@ plus.addEventListener('click', (event)=>{
     if(operator === '+'){
         return;
     }
-
-    else if(operator!='' && noOperationYet ===true && displayNumber.length=== 0){
+// && noOperationYet ===true
+    else if(operator!='' && displayNumber.length=== 0){
         operator = '+';
-        displayTop.textContent = `${n1} ${operator} ${n2}`;
+        displayTop.textContent = `${n1} ${operator}`;
 
     }
     // else if(noOperationYet === true){
@@ -225,7 +225,8 @@ substract.addEventListener('click', (event)=>{
     if (operator === '-'){
         return;
     }
-   else if(operator!='' && noOperationYet ===true && displayNumber.length=== 0){
+    //&& noOperationYet ===true 
+   else if(operator!='' &&  displayNumber.length=== 0){
         operator = '-';
         displayTop.textContent = `${n1} ${operator}`;
         
