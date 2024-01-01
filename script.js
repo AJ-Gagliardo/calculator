@@ -120,20 +120,10 @@ plus.addEventListener('click', (event)=>{
     else if(operator!='' && displayNumber.length=== 0){
         operator = '+';
         displayTop.textContent = `${n1} ${operator}`;
+        displayBot.textContent=''; 
 
     }
 
-    else if(firstInput === false && n2!=''){
-        n2 = parseFloat(displayNumber.join(''));
-        displayBot.textContent = add(n1, n2);
-        displayTop.textContent = `${n1} ${operator}`;
-        n1 = parseFloat(displayBot.textContent);
-        n2 = '';
-        displayNumber = [];
-        operator='';
-        previousIsResult=false; // testing
-        console.log(`n1= ${n1} , n2= ${n2}, operator= ${operator}, firstInput = ${firstInput}, previousIsResult= ${previousIsResult} if +`)
-    }
     else if(firstInput === false && n2===''){
         operator = '+'
         displayTop.textContent = `${n1} ${operator} ${n2}`;
@@ -151,10 +141,33 @@ plus.addEventListener('click', (event)=>{
         displayNumber = [];
         displayBot.textContent ='' 
         console.log(`n1= ${n1} , n2= ${n2}, operator= ${operator}, firstInput = ${firstInput}, previousIsResult= ${previousIsResult} else if + 2nd`)
-    };
+    }
+    
+    else if(firstInput === false && n2!=''){
+        // n2 = parseFloat(displayBot.textContent);
+        operator='+';
+        // displayBot.textContent = add(n1, n2);
+        displayTop.textContent = `${n1} ${operator}`;
+        previousIsResult=false;
+        // n1 = parseFloat(displayBot.textContent);
+        // n2 = '';
+        // displayNumber = [];
+
+        previousIsResult=false; // testing
+        console.log(`n1= ${n1} , n2= ${n2}, operator= ${operator}, firstInput = ${firstInput}, previousIsResult= ${previousIsResult} if + 3rd`)
+    }
+    ;
 
    
-    
+    // else if(firstInput ===false && n2!=''){
+    //     operator = '-';
+    //     n2 = parseFloat(displayBot.textContent);
+
+    //     displayTop.textContent = `${n1} ${operator}`;
+    //     n2=''
+    //     previousIsResult = false;
+    //     console.log(`n1= ${n1} , n2= ${n2}, operator= ${operator}, firstInput = ${firstInput}, previousIsResult= ${previousIsResult} if - 3rd`)
+    // }
 
 
 });
@@ -179,7 +192,7 @@ equals.addEventListener('click', (event)=>{
         operator === '+' ? (displayBot.textContent = add(n1,n2))
         : operator === '-' ? (displayBot.textContent = subsctract(n1,n2))
         : operator === '*' ? (displayBot.textContent = multiply(n1,n2))
-        :operator === '/' ? (display.Bot.textContent = divide(n1,n2))
+        :operator === '/' ? (displayBot.textContent = divide(n1,n2))
         : 'undefined';
 
         n1= parseFloat(displayBot.textContent);
@@ -209,6 +222,7 @@ substract.addEventListener('click', (event)=>{
    else if(operator!='' &&  displayNumber.length=== 0){
         operator = '-';
         displayTop.textContent = `${n1} ${operator}`;
+        displayBot.textContent=''; 
         
     }
     // else if(noOperationYet === true){
@@ -240,8 +254,8 @@ substract.addEventListener('click', (event)=>{
     else if(firstInput ===false && n2!=''){
         operator = '-';
         n2 = parseFloat(displayBot.textContent);
-        displayBot.textContent = subsctract(n1,n2);
-        displayTop.textContent = `${n1} ${operator} ${n2}`;
+        // displayBot.textContent = subsctract(n1,n2);
+        displayTop.textContent = `${n1} ${operator}`;
         n2=''
         previousIsResult = false;
         console.log(`n1= ${n1} , n2= ${n2}, operator= ${operator}, firstInput = ${firstInput}, previousIsResult= ${previousIsResult} if - 3rd`)
@@ -255,6 +269,12 @@ multiplication.addEventListener('click', (event)=>{
     if (operator === '*'){
         return;
     }
+
+    else if(operator != '' && displayNumber.length === 0){
+        operator = '*';
+        displayTop.textContent=`${n1} ${operator}`;
+        displayBot.textContent='';  
+    }
     else if (firstInput===true && previousIsResult === false){
         operator = '*';
         n1=parseFloat(displayBot.textContent);
@@ -262,11 +282,68 @@ multiplication.addEventListener('click', (event)=>{
         displayNumber=[]
         firstInput= false;
         
+   }
+    else if (firstInput===false && n2===''){
+        operator='*';
+        
+        displayTop.textContent = `${n1} ${operator} ${n2}`;
+        // displayBot.textContent = multiply(n1,n2);
+        previousIsResult=false;
     }
+
+    else if(firstInput===false && n2!=''){
+        return
+    }
+
+})
+
+
+const division = document.getElementById('divSymbol')
+
+division.addEventListener('click', (event)=>{
+if (operator === '/'){
+    return;
+}
+
+else if(operator != '' && displayNumber.length === 0){
+    operator = '/';
+    displayTop.textContent=`${n1} ${operator}`;
+    displayBot.textContent='';  
+}
+else if (firstInput===true && previousIsResult === false){
+    operator = '/';
+    n1=parseFloat(displayBot.textContent);
+    displayTop.textContent = `${n1} ${operator}`;
+    displayNumber=[]
+    firstInput= false;
+    
+}
+else if (firstInput===false && n2===''){
+    operator='/';
+    
+    displayTop.textContent = `${n1} ${operator} ${n2}`;
+    // displayBot.textContent = multiply(n1,n2);
+    previousIsResult=false;
+}
+
+else if(firstInput===false && n2!=''){
+    return
+}
 
 })
 
 
 
 
+
+//2/4+6
+
+const backspace = document.getElementById('backspace') ;
+console.log(backspace)
+
+
+backspace.addEventListener('click',(event)=>{
+    displayNumber.pop();
+    displayBot.textContent = displayNumber.join();
+})
 
