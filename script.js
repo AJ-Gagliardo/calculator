@@ -110,6 +110,8 @@ numbers.forEach((num) => {
 
 let firstInput = true;
 previousIsResult=false;
+noOperationYet=true;
+
 
 
 // ### Adding button ### 
@@ -120,10 +122,23 @@ plus.addEventListener('click', (event)=>{
     if(operator === '+'){
         return;
     }
+
+    else if(operator!='' && noOperationYet ===true && displayNumber.length=== 0){
+        operator = '+';
+        displayTop.textContent = `${n1} ${operator} ${n2}`;
+
+    }
+    // else if(noOperationYet === true){
+    //     operator='+';
+    //     n1=parseFloat(displayBot.textContent)
+    //     displayNumber=[]
+    //     displayTop.textContent = `${n1} ${operator}`;
+
+    // }
     else if(firstInput === false && n2!=''){
         n2 = parseFloat(displayNumber.join(''));
         displayBot.textContent = add(n1, n2);
-        displayTop.textContent = `${n1} ${operator} ${n2}`;
+        displayTop.textContent = `${n1} ${operator}`;
         n1 = parseFloat(displayBot.textContent);
         n2 = '';
         displayNumber = [];
@@ -138,6 +153,7 @@ plus.addEventListener('click', (event)=>{
          console.log(`n1= ${n1} , n2= ${n2}, operator= ${operator}, firstInput = ${firstInput}, previousIsResult= ${previousIsResult} else if +`)
     }
 
+    // problem to solve 2 - +
     else if(firstInput === true && previousIsResult===false){
         n1= parseFloat(displayNumber.join(''));
         operator = '+'
@@ -172,7 +188,11 @@ equals.addEventListener('click', (event)=>{
     // if(displayNumberIsResult === false){
     //     return;
     // }
-    if(firstInput === false && previousIsResult===false){
+    if(firstInput === true){
+        return;
+    }
+
+    else if((firstInput === false && previousIsResult===false)){
         n2=parseFloat(displayNumber.join(''));
         displayTop.textContent = `${n1} ${operator} ${n2}`; 
 
@@ -191,9 +211,7 @@ equals.addEventListener('click', (event)=>{
         console.log(`n1= ${n1} , n2= ${n2}, operator= ${operator}, firstInput = ${firstInput}, previousIsResult= ${previousIsResult}`)
         
     }
-    if(firstInput === true){
-        return;
-    }
+
 })
 
 
@@ -207,6 +225,18 @@ substract.addEventListener('click', (event)=>{
     if (operator === '-'){
         return;
     }
+   else if(operator!='' && noOperationYet ===true && displayNumber.length=== 0){
+        operator = '-';
+        displayTop.textContent = `${n1} ${operator}`;
+        
+    }
+    // else if(noOperationYet === true){
+    //     operator='-';
+    //     n1=parseFloat(displayBot.textContent)
+    //     displayNumber=[]
+    //     displayTop.textContent = `${n1} ${operator}`;
+
+    // }
 
     else if(firstInput===true && previousIsResult === false){
         operator = '-';
@@ -238,8 +268,27 @@ substract.addEventListener('click', (event)=>{
 })
 
 
+const multiplication = document.getElementById('multSymbol');
+multiplication.addEventListener('click', (event)=>{
+
+    if (operator === '*'){
+        return;
+    }
+    else if (firstInput===true && previousIsResult === false){
+        operator = '*';
+        n1=parseFloat(displayBot.textContent);
+        displayTop.textContent = `${n1} ${operator}`;
+        displayNumber=[]
+        firstInput= false;
+        
+    }
+
+})
 
 
+// problem to solve 
+// 2 + - 
+// changing symbol gives NAN
 
 
 
