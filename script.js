@@ -147,7 +147,9 @@ plus.addEventListener('click', (event)=>{
     else if(firstInput === false && n2===''){
         operator = '+'
         displayTop.textContent = `${n1} ${operator} ${n2}`;
+        displayBot.textContent='';
         previousIsResult = false; //testing
+
          console.log(`n1= ${n1} , n2= ${n2}, operator= ${operator}, firstInput = ${firstInput}, previousIsResult= ${previousIsResult} else if +`)
     }
 
