@@ -347,3 +347,17 @@ backspace.addEventListener('click',(event)=>{
     displayBot.textContent = displayNumber.join();
 })
 
+
+const clear = document.getElementById('clear');
+console.log(clear)
+
+clear.addEventListener('click',(event)=>{
+    displayNumber=[]
+    n1='';
+    n2='';
+    operator='';
+    firstInput = true;
+previousIsResult=false;
+displayBot.textContent = ''
+displayTop.textContent = ''
+})
