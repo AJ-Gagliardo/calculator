@@ -68,6 +68,9 @@ function eraseDisplay(){
     }
 }
 
+
+
+
 displayBot.textContent = displayNumber;
 
 
@@ -82,6 +85,23 @@ for (let i = 0; i <= 9; i++) {
   numbers.push(num);
 }
 
+const period = document.getElementById('period');
+period.addEventListener('click',(event)=>{
+    
+    if(displayNumber[displayNumber.length -1] === '.'){
+        return;
+    }
+
+    else{
+
+        eraseDisplay();
+        const clickedBtn = event.target.textContent;
+        
+        displayNumber.push(clickedBtn);
+        displayBot.textContent = displayNumber.join('')
+    }
+
+})
 
 
 numbers.forEach((num) => {
@@ -158,16 +178,7 @@ plus.addEventListener('click', (event)=>{
     }
     ;
 
-   
-    // else if(firstInput ===false && n2!=''){
-    //     operator = '-';
-    //     n2 = parseFloat(displayBot.textContent);
 
-    //     displayTop.textContent = `${n1} ${operator}`;
-    //     n2=''
-    //     previousIsResult = false;
-    //     console.log(`n1= ${n1} , n2= ${n2}, operator= ${operator}, firstInput = ${firstInput}, previousIsResult= ${previousIsResult} if - 3rd`)
-    // }
 
 
 });
@@ -225,13 +236,6 @@ substract.addEventListener('click', (event)=>{
         displayBot.textContent=''; 
         
     }
-    // else if(noOperationYet === true){
-    //     operator='-';
-    //     n1=parseFloat(displayBot.textContent)
-    //     displayNumber=[]
-    //     displayTop.textContent = `${n1} ${operator}`;
-
-    // }
 
     else if(firstInput===true && previousIsResult === false){
         operator = '-';
